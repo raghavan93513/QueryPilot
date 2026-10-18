@@ -22,12 +22,11 @@
 8. [Evaluation and Observability](#evaluation-and-observability)
 9. [Engineering Tradeoff: Step Efficiency vs. Reliability](#engineering-tradeoff-step-efficiency-vs-reliability)
 10. [Problems Encountered and Fixes](#problems-encountered-and-fixes)
-11. [Safety and Limitations](#safety-and-limitations)
-12. [Repository Structure](#repository-structure)
-13. [Run Locally](#run-locally)
-14. [API and Developer Workflows](#api-and-developer-workflows)
-15. [What I Would Improve Next](#what-i-would-improve-next)
-16. [References](#references)
+11. [Repository Structure](#repository-structure)
+12. [Run Locally](#run-locally)
+13. [API and Developer Workflows](#api-and-developer-workflows)
+14. [What I Would Improve Next](#what-i-would-improve-next)
+15. [References](#references)
 
 ---
 
@@ -216,7 +215,7 @@ These are the frameworks **implemented in this repository**, not a claim that ev
 | Layer | Technology | Why this choice | Engineering consideration |
 | --- | --- | --- | --- |
 | Workflow orchestration | **LangGraph** | Explicit state graph, cycles, conditional edges, checkpoints, HITL interrupts | More controllable than a single open-ended agent loop |
-| Specialist agents | **AutoGen AgentChat** (`AssistantAgent`, `RoundRobinGroupChat`) | Demonstrates SQL-writing and reviewing as distinct responsibilities | AutoGen is now in maintenance mode; see note below |
+| Specialist agents | **AutoGen AgentChat** (`AssistantAgent`, `RoundRobinGroupChat`) | Demonstrates SQL-writing and reviewing as distinct responsibilities | AutoGen is now in maintenance mode |
 | Local LLM | **Qwen3-4B-Instruct-2507** | Open-weight instruction model able to produce SQL; suitable local footprint | Small models can still make aggregation/join mistakes |
 | Model serving | **Ollama** (`OllamaChatCompletionClient`) | Local inference without a hosted inference dependency | Model must be downloaded and service running |
 | Backend HTTP | **FastAPI + Pydantic + Uvicorn** | Typed request validation, automatic `/docs`, straightforward API | Local-only demo; no authentication layer |
