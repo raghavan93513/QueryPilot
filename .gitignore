@@ -1,0 +1,35 @@
+# Secrets and local environments
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+.deepeval/
+
+# Python / test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+
+# Runtime databases, checkpoints, logs, and temporary evaluations
+data/*
+!data/.gitkeep
+reports/generated/*
+!reports/generated/.gitkeep
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.duckdb
+*.duckdb.wal
+*.db
+*.log
+
+# Local dev files
+.DS_Store
+.AppleDouble
+.vscode/
+.idea/

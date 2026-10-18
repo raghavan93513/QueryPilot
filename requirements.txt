@@ -1,0 +1,14 @@
+# Python 3.11 or 3.12 recommended
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+pydantic>=2.8,<3
+duckdb>=1.1,<2
+sqlglot>=26,<30
+langgraph>=1.0,<2
+langgraph-checkpoint-sqlite>=3,<4
+autogen-agentchat>=0.7,<1
+autogen-ext[ollama]>=0.7,<1
+deepeval>=3,<5
+pytest>=8,<10
+httpx>=0.27,<1
+python-dotenv>=1,<2

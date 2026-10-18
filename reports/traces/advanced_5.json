@@ -1,0 +1,715 @@
+[
+  {
+    "question": "How many customers are there?",
+    "passed": true,
+    "expected_rows": [
+      [
+        8
+      ]
+    ],
+    "actual_rows": [
+      {
+        "customer_count": 8
+      }
+    ],
+    "attempts": 1,
+    "schema_verified_once": true,
+    "status": "completed",
+    "judge_policy": "schema-required",
+    "trace": [
+      {
+        "at": "2026-10-18T14:41:06.807753+00:00",
+        "node": "loop",
+        "status": "unknown",
+        "next": [
+          "inspect_schema"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:06.817910+00:00",
+        "node": "loop",
+        "status": "planning",
+        "next": [
+          "draft"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:07.663893+00:00",
+        "node": "loop",
+        "status": "awaiting_approval",
+        "next": [
+          "approval"
+        ],
+        "attempts": 1,
+        "sql": "SELECT COUNT(*) AS customer_count\nFROM customers;",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:07.668123+00:00",
+        "node": "loop",
+        "status": "approved",
+        "next": [
+          "execute"
+        ],
+        "attempts": 1,
+        "sql": "SELECT COUNT(*) AS customer_count\nFROM customers;",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:07.699025+00:00",
+        "node": "loop",
+        "status": "executed",
+        "next": [
+          "finish"
+        ],
+        "attempts": 1,
+        "sql": "SELECT COUNT(*) AS customer_count FROM customers",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 1
+      },
+      {
+        "at": "2026-10-18T14:41:07.699316+00:00",
+        "node": "loop",
+        "status": "completed",
+        "next": [],
+        "attempts": 1,
+        "sql": "SELECT COUNT(*) AS customer_count FROM customers",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 1
+      }
+    ]
+  },
+  {
+    "question": "How many completed orders are there?",
+    "passed": true,
+    "expected_rows": [
+      [
+        14
+      ]
+    ],
+    "actual_rows": [
+      {
+        "completed_orders_count": 14
+      }
+    ],
+    "attempts": 1,
+    "schema_verified_once": true,
+    "status": "completed",
+    "judge_policy": "schema-required",
+    "trace": [
+      {
+        "at": "2026-10-18T14:41:16.856330+00:00",
+        "node": "loop",
+        "status": "unknown",
+        "next": [
+          "inspect_schema"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:16.878212+00:00",
+        "node": "loop",
+        "status": "planning",
+        "next": [
+          "draft"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:18.130903+00:00",
+        "node": "loop",
+        "status": "awaiting_approval",
+        "next": [
+          "approval"
+        ],
+        "attempts": 1,
+        "sql": "SELECT COUNT(*) AS completed_orders_count\nFROM orders\nWHERE status = 'completed';",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:18.134501+00:00",
+        "node": "loop",
+        "status": "approved",
+        "next": [
+          "execute"
+        ],
+        "attempts": 1,
+        "sql": "SELECT COUNT(*) AS completed_orders_count\nFROM orders\nWHERE status = 'completed';",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:18.148582+00:00",
+        "node": "loop",
+        "status": "executed",
+        "next": [
+          "finish"
+        ],
+        "attempts": 1,
+        "sql": "SELECT COUNT(*) AS completed_orders_count FROM orders WHERE status = 'completed'",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 1
+      },
+      {
+        "at": "2026-10-18T14:41:18.148999+00:00",
+        "node": "loop",
+        "status": "completed",
+        "next": [],
+        "attempts": 1,
+        "sql": "SELECT COUNT(*) AS completed_orders_count FROM orders WHERE status = 'completed'",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 1
+      }
+    ]
+  },
+  {
+    "question": "What is the total revenue from completed orders?",
+    "passed": true,
+    "expected_rows": [
+      [
+        2430.0
+      ]
+    ],
+    "actual_rows": [
+      {
+        "total_revenue": 2430.0
+      }
+    ],
+    "attempts": 2,
+    "schema_verified_once": true,
+    "status": "completed",
+    "judge_policy": "schema-required",
+    "trace": [
+      {
+        "at": "2026-10-18T14:41:25.239449+00:00",
+        "node": "loop",
+        "status": "unknown",
+        "next": [
+          "inspect_schema"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:25.261474+00:00",
+        "node": "loop",
+        "status": "planning",
+        "next": [
+          "draft"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:27.521914+00:00",
+        "node": "loop",
+        "status": "awaiting_approval",
+        "next": [
+          "approval"
+        ],
+        "attempts": 1,
+        "sql": "SELECT SUM(order_items.quantity * order_items.unit_price) AS total_revenue\nFROM order_items\nJOIN orders ON order_items.order_id = orders.order\nWHERE orders.status = 'completed';",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:27.525218+00:00",
+        "node": "loop",
+        "status": "approved",
+        "next": [
+          "execute"
+        ],
+        "attempts": 1,
+        "sql": "SELECT SUM(order_items.quantity * order_items.unit_price) AS total_revenue\nFROM order_items\nJOIN orders ON order_items.order_id = orders.order\nWHERE orders.status = 'completed';",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:27.540640+00:00",
+        "node": "loop",
+        "status": "query_failed",
+        "next": [
+          "draft"
+        ],
+        "attempts": 1,
+        "sql": "SELECT SUM(order_items.quantity * order_items.unit_price) AS total_revenue\nFROM order_items\nJOIN orders ON order_items.order_id = orders.order\nWHERE orders.status = 'completed';",
+        "error": "BinderException: Binder Error: Table \"orders\" does not have a column named \"order\"\n\nCandidate bindings: : \"order_date\", \"order_id\"\n\nLINE 1: ... FROM order_items JOIN orders ON order_items.order_id = orders.\"order\" WHERE orders.status = 'completed') AS query_...\n                                                                   ^",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:29.733896+00:00",
+        "node": "loop",
+        "status": "awaiting_approval",
+        "next": [
+          "approval"
+        ],
+        "attempts": 2,
+        "sql": "SELECT SUM(order_items.quantity * order_items.unit_price) AS total_revenue\nFROM order_items\nJOIN orders ON order_items.order_id = orders.order_id\nWHERE orders.status = 'completed';",
+        "error": "BinderException: Binder Error: Table \"orders\" does not have a column named \"order\"\n\nCandidate bindings: : \"order_date\", \"order_id\"\n\nLINE 1: ... FROM order_items JOIN orders ON order_items.order_id = orders.\"order\" WHERE orders.status = 'completed') AS query_...\n                                                                   ^",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:29.737548+00:00",
+        "node": "loop",
+        "status": "approved",
+        "next": [
+          "execute"
+        ],
+        "attempts": 2,
+        "sql": "SELECT SUM(order_items.quantity * order_items.unit_price) AS total_revenue\nFROM order_items\nJOIN orders ON order_items.order_id = orders.order_id\nWHERE orders.status = 'completed';",
+        "error": "BinderException: Binder Error: Table \"orders\" does not have a column named \"order\"\n\nCandidate bindings: : \"order_date\", \"order_id\"\n\nLINE 1: ... FROM order_items JOIN orders ON order_items.order_id = orders.\"order\" WHERE orders.status = 'completed') AS query_...\n                                                                   ^",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:29.752494+00:00",
+        "node": "loop",
+        "status": "executed",
+        "next": [
+          "finish"
+        ],
+        "attempts": 2,
+        "sql": "SELECT SUM(order_items.quantity * order_items.unit_price) AS total_revenue FROM order_items JOIN orders ON order_items.order_id = orders.order_id WHERE orders.status = 'completed'",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql",
+          "execute_sql"
+        ],
+        "rows_returned": 1
+      },
+      {
+        "at": "2026-10-18T14:41:29.752840+00:00",
+        "node": "loop",
+        "status": "completed",
+        "next": [],
+        "attempts": 2,
+        "sql": "SELECT SUM(order_items.quantity * order_items.unit_price) AS total_revenue FROM order_items JOIN orders ON order_items.order_id = orders.order_id WHERE orders.status = 'completed'",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql",
+          "execute_sql"
+        ],
+        "rows_returned": 1
+      }
+    ]
+  },
+  {
+    "question": "Show the top five customers by completed revenue",
+    "passed": true,
+    "expected_rows": [
+      [
+        "George",
+        505.0
+      ],
+      [
+        "Ava",
+        415.0
+      ],
+      [
+        "Hana",
+        390.0
+      ],
+      [
+        "Ben",
+        380.0
+      ],
+      [
+        "Daniel",
+        220.0
+      ]
+    ],
+    "actual_rows": [
+      {
+        "customer_id": 7,
+        "name": "George",
+        "completed_revenue": 505.0
+      },
+      {
+        "customer_id": 1,
+        "name": "Ava",
+        "completed_revenue": 415.0
+      },
+      {
+        "customer_id": 8,
+        "name": "Hana",
+        "completed_revenue": 390.0
+      },
+      {
+        "customer_id": 2,
+        "name": "Ben",
+        "completed_revenue": 380.0
+      },
+      {
+        "customer_id": 6,
+        "name": "Farah",
+        "completed_revenue": 220.0
+      }
+    ],
+    "attempts": 1,
+    "schema_verified_once": true,
+    "status": "completed",
+    "judge_policy": "schema-required",
+    "trace": [
+      {
+        "at": "2026-10-18T14:41:36.879579+00:00",
+        "node": "loop",
+        "status": "unknown",
+        "next": [
+          "inspect_schema"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:36.900695+00:00",
+        "node": "loop",
+        "status": "planning",
+        "next": [
+          "draft"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:41.706252+00:00",
+        "node": "loop",
+        "status": "awaiting_approval",
+        "next": [
+          "approval"
+        ],
+        "attempts": 1,
+        "sql": "SELECT \n    c.customer_id,\n    c.name,\n    SUM(oi.quantity * oi.unit_price) AS completed_revenue\nFROM \n    customers c\nJOIN \n    orders o ON c.customer_id = o.customer_id\nJOIN \n    order_items oi ON o.order_id = oi.order_id\nWHERE \n    o.status = 'completed'\nGROUP BY \n    c.customer_id, c.name\nORDER BY \n    completed_revenue DESC\nLIMIT 5;",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:41.709881+00:00",
+        "node": "loop",
+        "status": "approved",
+        "next": [
+          "execute"
+        ],
+        "attempts": 1,
+        "sql": "SELECT \n    c.customer_id,\n    c.name,\n    SUM(oi.quantity * oi.unit_price) AS completed_revenue\nFROM \n    customers c\nJOIN \n    orders o ON c.customer_id = o.customer_id\nJOIN \n    order_items oi ON o.order_id = oi.order_id\nWHERE \n    o.status = 'completed'\nGROUP BY \n    c.customer_id, c.name\nORDER BY \n    completed_revenue DESC\nLIMIT 5;",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:41.731486+00:00",
+        "node": "loop",
+        "status": "executed",
+        "next": [
+          "finish"
+        ],
+        "attempts": 1,
+        "sql": "SELECT c.customer_id, c.name, SUM(oi.quantity * oi.unit_price) AS completed_revenue FROM customers AS c JOIN orders AS o ON c.customer_id = o.customer_id JOIN order_items AS oi ON o.order_id = oi.order_id WHERE o.status = 'completed' GROUP BY c.customer_id, c.name ORDER BY completed_revenue DESC LIMIT 5",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 5
+      },
+      {
+        "at": "2026-10-18T14:41:41.731839+00:00",
+        "node": "loop",
+        "status": "completed",
+        "next": [],
+        "attempts": 1,
+        "sql": "SELECT c.customer_id, c.name, SUM(oi.quantity * oi.unit_price) AS completed_revenue FROM customers AS c JOIN orders AS o ON c.customer_id = o.customer_id JOIN order_items AS oi ON o.order_id = oi.order_id WHERE o.status = 'completed' GROUP BY c.customer_id, c.name ORDER BY completed_revenue DESC LIMIT 5",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 5
+      }
+    ]
+  },
+  {
+    "question": "Show completed revenue by product",
+    "passed": true,
+    "expected_rows": [
+      [
+        "Monitor",
+        1320.0
+      ],
+      [
+        "Keyboard",
+        400.0
+      ],
+      [
+        "Webcam",
+        325.0
+      ],
+      [
+        "Mouse",
+        225.0
+      ],
+      [
+        "Laptop Stand",
+        160.0
+      ]
+    ],
+    "actual_rows": [
+      {
+        "product_name": "Webcam",
+        "completed_revenue": 325.0
+      },
+      {
+        "product_name": "Keyboard",
+        "completed_revenue": 400.0
+      },
+      {
+        "product_name": "Laptop Stand",
+        "completed_revenue": 160.0
+      },
+      {
+        "product_name": "Mouse",
+        "completed_revenue": 225.0
+      },
+      {
+        "product_name": "Monitor",
+        "completed_revenue": 1320.0
+      }
+    ],
+    "attempts": 2,
+    "schema_verified_once": true,
+    "status": "completed",
+    "judge_policy": "schema-required",
+    "trace": [
+      {
+        "at": "2026-10-18T14:41:49.111487+00:00",
+        "node": "loop",
+        "status": "unknown",
+        "next": [
+          "inspect_schema"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:49.132275+00:00",
+        "node": "loop",
+        "status": "planning",
+        "next": [
+          "draft"
+        ],
+        "attempts": 0,
+        "sql": "",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:53.059714+00:00",
+        "node": "loop",
+        "status": "awaiting_approval",
+        "next": [
+          "approval"
+        ],
+        "attempts": 1,
+        "sql": "SELECT \n    products.name AS product_name,\n    SUM(order_items.quantity * order_items.unit_price) AS completed_revenue\nFROM \n    order_items\nJOIN \n    orders ON order_items.order_id = orders.order_id\nJOIN \n    products ON order_items.product_id = products.product\nWHERE \n    orders.status = 'completed'\nGROUP BY \n    products.name",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:53.063183+00:00",
+        "node": "loop",
+        "status": "approved",
+        "next": [
+          "execute"
+        ],
+        "attempts": 1,
+        "sql": "SELECT \n    products.name AS product_name,\n    SUM(order_items.quantity * order_items.unit_price) AS completed_revenue\nFROM \n    order_items\nJOIN \n    orders ON order_items.order_id = orders.order_id\nJOIN \n    products ON order_items.product_id = products.product\nWHERE \n    orders.status = 'completed'\nGROUP BY \n    products.name",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:53.077165+00:00",
+        "node": "loop",
+        "status": "query_failed",
+        "next": [
+          "draft"
+        ],
+        "attempts": 1,
+        "sql": "SELECT \n    products.name AS product_name,\n    SUM(order_items.quantity * order_items.unit_price) AS completed_revenue\nFROM \n    order_items\nJOIN \n    orders ON order_items.order_id = orders.order_id\nJOIN \n    products ON order_items.product_id = products.product\nWHERE \n    orders.status = 'completed'\nGROUP BY \n    products.name",
+        "error": "BinderException: Binder Error: Table \"products\" does not have a column named \"product\"\n\nCandidate bindings: : \"product_id\"\n\nLINE 1: ... = orders.order_id JOIN products ON order_items.product_id = products.product WHERE orders.status = 'completed' GROUP...\n                                                                        ^",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:56.958536+00:00",
+        "node": "loop",
+        "status": "awaiting_approval",
+        "next": [
+          "approval"
+        ],
+        "attempts": 2,
+        "sql": "SELECT \n    products.name AS product_name,\n    SUM(order_items.quantity * order_items.unit_price) AS completed_revenue\nFROM \n    order_items\nJOIN \n    orders ON order_items.order_id = orders.order_id\nJOIN \n    products ON order_items.product_id = products.product_id\nWHERE \n    orders.status = 'completed'\nGROUP BY \n    products.name",
+        "error": "BinderException: Binder Error: Table \"products\" does not have a column named \"product\"\n\nCandidate bindings: : \"product_id\"\n\nLINE 1: ... = orders.order_id JOIN products ON order_items.product_id = products.product WHERE orders.status = 'completed' GROUP...\n                                                                        ^",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:56.961324+00:00",
+        "node": "loop",
+        "status": "approved",
+        "next": [
+          "execute"
+        ],
+        "attempts": 2,
+        "sql": "SELECT \n    products.name AS product_name,\n    SUM(order_items.quantity * order_items.unit_price) AS completed_revenue\nFROM \n    order_items\nJOIN \n    orders ON order_items.order_id = orders.order_id\nJOIN \n    products ON order_items.product_id = products.product_id\nWHERE \n    orders.status = 'completed'\nGROUP BY \n    products.name",
+        "error": "BinderException: Binder Error: Table \"products\" does not have a column named \"product\"\n\nCandidate bindings: : \"product_id\"\n\nLINE 1: ... = orders.order_id JOIN products ON order_items.product_id = products.product WHERE orders.status = 'completed' GROUP...\n                                                                        ^",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql"
+        ],
+        "rows_returned": 0
+      },
+      {
+        "at": "2026-10-18T14:41:56.976751+00:00",
+        "node": "loop",
+        "status": "executed",
+        "next": [
+          "finish"
+        ],
+        "attempts": 2,
+        "sql": "SELECT products.name AS product_name, SUM(order_items.quantity * order_items.unit_price) AS completed_revenue FROM order_items JOIN orders ON order_items.order_id = orders.order_id JOIN products ON order_items.product_id = products.product_id WHERE orders.status = 'completed' GROUP BY products.name",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql",
+          "execute_sql"
+        ],
+        "rows_returned": 5
+      },
+      {
+        "at": "2026-10-18T14:41:56.977134+00:00",
+        "node": "loop",
+        "status": "completed",
+        "next": [],
+        "attempts": 2,
+        "sql": "SELECT products.name AS product_name, SUM(order_items.quantity * order_items.unit_price) AS completed_revenue FROM order_items JOIN orders ON order_items.order_id = orders.order_id JOIN products ON order_items.product_id = products.product_id WHERE orders.status = 'completed' GROUP BY products.name",
+        "error": "",
+        "tool_calls": [
+          "inspect_schema",
+          "execute_sql",
+          "execute_sql"
+        ],
+        "rows_returned": 5
+      }
+    ]
+  }
+]

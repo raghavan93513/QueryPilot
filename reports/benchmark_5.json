@@ -1,0 +1,160 @@
+[
+  {
+    "question": "How many customers are there?",
+    "passed": true,
+    "expected_rows": [
+      [
+        8
+      ]
+    ],
+    "actual_rows": [
+      {
+        "customer_count": 8
+      }
+    ],
+    "attempts": 1,
+    "tool_correctness": 1.0,
+    "status": "completed"
+  },
+  {
+    "question": "How many completed orders are there?",
+    "passed": true,
+    "expected_rows": [
+      [
+        14
+      ]
+    ],
+    "actual_rows": [
+      {
+        "completed_orders_count": 14
+      }
+    ],
+    "attempts": 1,
+    "tool_correctness": 1.0,
+    "status": "completed"
+  },
+  {
+    "question": "What is the total revenue from completed orders?",
+    "passed": true,
+    "expected_rows": [
+      [
+        2430.0
+      ]
+    ],
+    "actual_rows": [
+      {
+        "total_revenue": 2430.0
+      }
+    ],
+    "attempts": 2,
+    "tool_correctness": 1.0,
+    "status": "completed"
+  },
+  {
+    "question": "Show the top five customers by completed revenue",
+    "passed": true,
+    "expected_rows": [
+      [
+        "George",
+        505.0
+      ],
+      [
+        "Ava",
+        415.0
+      ],
+      [
+        "Hana",
+        390.0
+      ],
+      [
+        "Ben",
+        380.0
+      ],
+      [
+        "Daniel",
+        220.0
+      ]
+    ],
+    "actual_rows": [
+      {
+        "customer_id": 7,
+        "name": "George",
+        "completed_revenue": 505.0
+      },
+      {
+        "customer_id": 1,
+        "name": "Ava",
+        "completed_revenue": 415.0
+      },
+      {
+        "customer_id": 8,
+        "name": "Hana",
+        "completed_revenue": 390.0
+      },
+      {
+        "customer_id": 2,
+        "name": "Ben",
+        "completed_revenue": 380.0
+      },
+      {
+        "customer_id": 4,
+        "name": "Daniel",
+        "completed_revenue": 220.0
+      }
+    ],
+    "attempts": 1,
+    "tool_correctness": 1.0,
+    "status": "completed"
+  },
+  {
+    "question": "Show completed revenue by product",
+    "passed": true,
+    "expected_rows": [
+      [
+        "Monitor",
+        1320.0
+      ],
+      [
+        "Keyboard",
+        400.0
+      ],
+      [
+        "Webcam",
+        325.0
+      ],
+      [
+        "Mouse",
+        225.0
+      ],
+      [
+        "Laptop Stand",
+        160.0
+      ]
+    ],
+    "actual_rows": [
+      {
+        "product_name": "Mouse",
+        "completed_revenue": 225.0
+      },
+      {
+        "product_name": "Laptop Stand",
+        "completed_revenue": 160.0
+      },
+      {
+        "product_name": "Monitor",
+        "completed_revenue": 1320.0
+      },
+      {
+        "product_name": "Keyboard",
+        "completed_revenue": 400.0
+      },
+      {
+        "product_name": "Webcam",
+        "completed_revenue": 325.0
+      }
+    ],
+    "attempts": 2,
+    "tool_correctness": 1.0,
+    "status": "completed"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "source": "DeepEval console aggregate (best-effort parser)",
+  "suite": "extended",
+  "judge_policy": "schema-required",
+  "completed_at": "2026-10-18T14:42:05.939602+00:00",
+  "task_completion": 0.98,
+  "step_efficiency": 0.4
+}

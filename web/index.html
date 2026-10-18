@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QueryPilot · SQL Analytics Agent</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a href="#workspace" class="brand"><span class="brand-icon">Q<span class="brand-dot">·</span></span><span><strong>QueryPilot</strong><small>Agentic SQL Studio</small></span></a>
+      <div class="side-caption">WORKSPACE</div>
+      <nav aria-label="Main navigation" class="nav">
+        <a id="nav-workspace" class="nav-link selected" href="#workspace"><span class="nav-symbol">⌘</span> SQL Workspace</a>
+        <a id="nav-evaluations" class="nav-link" href="#evaluations"><span class="nav-symbol">▥</span> Evaluations</a>
+      </nav>
+      <div class="side-caption history-caption">RECENT SESSIONS <button class="tiny-ghost" id="clear-history" title="Clear browser history">Clear</button></div>
+      <div id="recent-runs" class="recent-list"><span class="muted tiny">Your recent runs appear here.</span></div>
+      <div class="sidebar-footer"><div class="status-dot" id="server-dot"></div><span id="server-status">Connecting…</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><span id="page-eyebrow">WORKSPACE / QUERY AGENT</span><span class="top-right"><span class="pill" id="model-pill">LOCAL QWEN + AUTOGEN</span><a href="/docs" target="_blank" rel="noopener" class="subtle-link" title="Optional developer API docs">API docs ↗</a></span></header>
+
+      <section id="workspace-page" class="page">
+        <div class="page-title"><div><div class="eyebrow">DATA INTELLIGENCE, WITH HUMAN CONTROL</div><h1>Ask your data anything<span class="accent">.</span></h1><p>Ask questions, review SQL, and get answers.</p></div><span class="mode-label">SQL / AGENT WORKFLOW</span></div>
+        <div class="workspace-grid">
+          <div class="stack">
+            <section class="panel prompt-panel"><div class="panel-label"><span class="step-circle">01</span> Your question <span class="right-small">Natural language → SQL</span></div>
+              <form id="question-form"><label class="sr-only" for="question">Ask a database question</label><textarea id="question" placeholder="e.g. Which five products generated the most revenue from completed orders?" rows="3" minlength="3" maxlength="500" required></textarea><div class="form-footer"><span>Database: <strong>shop.duckdb</strong></span><button type="submit" class="primary" id="ask-button">Generate SQL <span>↗</span></button></div></form>
+              <div class="examples"><div class="example-label">TRY AN EXAMPLE</div><button type="button" data-example="How many customers are there?">Count customers</button><button type="button" data-example="Show the top five customers by completed revenue">Top customers</button><button type="button" data-example="Show completed revenue by product">Product revenue</button></div>
+            </section>
+            <div id="workspace-notice" role="status" class="notice hidden"></div>
+            <section class="panel" id="sql-panel"><div class="panel-label"><span class="step-circle">02</span> SQL proposal <span id="attempt-pill" class="right-small">Waiting for a question</span></div><div id="sql-content" class="empty-state small"><div class="empty-icon">{ }</div><strong>Your SQL will appear here</strong><span>Ready for your question.</span></div></section>
+            <section class="panel" id="results-panel"><div class="panel-label"><span class="step-circle">03</span> Query results <span id="result-count" class="right-small">No execution yet</span></div><div id="results-content" class="empty-state small"><div class="empty-icon">▦</div><strong>Results appear after approval</strong><span>Approve a query to see results.</span></div></section>
+          </div>
+          <aside class="stack right-rail"><section class="panel details-panel"><div class="panel-label">CURRENT RUN</div><div class="detail-line"><span>Status</span><strong id="current-status">Not started</strong></div><div class="detail-line"><span>SQL attempts</span><strong id="current-attempts">—</strong></div><div class="detail-line"><span>Tools used</span><strong id="current-tools">—</strong></div><div class="detail-line"><span>Run ID</span><span id="current-id" class="monospace small-id">—</span></div></section>
+          <section class="panel"><div class="panel-label">WORKFLOW TRACE <span class="right-small">LangGraph checkpoints</span></div><div id="live-timeline" class="timeline-placeholder">Workflow steps appear here.</div></section>
+          </aside>
+        </div>
+      </section>
+
+      <section id="evaluations-page" class="page hidden">
+        <div class="page-title eval-title"><div><div class="eyebrow">MEASURE BEFORE YOU OPTIMIZE</div><h1>Evaluation center<span class="accent">.</span></h1><p>Accuracy, retries, tool use, and traces.</p></div></div>
+        <section class="panel run-eval-panel"><div class="panel-label"><span class="step-circle">↳</span> Run a benchmark <span class="right-small">Sample database</span></div>
+          <div class="run-eval-grid"><label>Suite<select id="suite"><option value="extended">Extended · 20 questions</option><option value="baseline">Baseline · 5 questions</option></select></label><label>Evaluation type<select id="eval-mode"><option value="standard">SQL accuracy + tool correctness</option><option value="advanced">DeepEval LLM judge</option></select></label><label id="judge-limit-label" class="hidden">Judge questions<input type="number" min="1" max="20" value="5" id="judge-limit" /></label><label id="judge-policy-label" class="hidden">Efficiency policy<select id="judge-policy"><option value="schema-required">Schema verification required</option><option value="raw">Unconstrained / raw question</option></select></label><button type="button" class="primary" id="start-evaluation">Run evaluation ↗</button></div>
+          
+          <div id="job-status" class="job-status hidden"><div class="job-header"><strong id="job-title">Evaluation running</strong><span class="pill" id="job-pill">Running</span></div><pre class="job-log" id="job-log"></pre></div>
+        </section>
+        <div class="eval-toolbar"><div><strong>Saved reports</strong><p>Benchmark history</p></div><div class="toolbar-actions"><select id="report-selector" aria-label="Select evaluation report"><option>Loading reports…</option></select><button class="outline" id="refresh-reports">Refresh ↻</button></div></div>
+        <div id="report-empty" class="panel empty-state"><div class="empty-icon">▤</div><strong>No benchmark report selected</strong><span>Run an evaluation to get started.</span></div>
+        <div id="report-data" class="hidden">
+          <div class="metric-grid"><div class="metric-card"><div class="metric-label">EXACT ACCURACY</div><div class="metric-number" id="m-accuracy">—</div><div class="metric-foot" id="m-passed">—</div></div><div class="metric-card"><div class="metric-label">WORKFLOWS COMPLETED</div><div class="metric-number" id="m-completed">—</div><div class="metric-foot">Completed runs</div></div><div class="metric-card"><div class="metric-label">FIRST-ATTEMPT SUCCESS</div><div class="metric-number" id="m-first">—</div><div class="metric-foot">Correct without retry</div></div><div class="metric-card"><div class="metric-label">AVG. SQL ATTEMPTS</div><div class="metric-number" id="m-attempts">—</div><div class="metric-foot" id="m-tools">Tool score: —</div></div></div>
+          <div class="evaluation-split"><section class="panel table-panel"><div class="panel-label">QUESTION-LEVEL EVALUATION <span class="right-small" id="report-name">—</span></div><div class="table-scroll"><table class="eval-table"><thead><tr><th>QUESTION</th><th>RESULT</th><th>ATTEMPTS</th><th>TRACE</th></tr></thead><tbody id="evaluation-rows"></tbody></table></div></section><section class="panel case-panel"><div class="panel-label">RESULT & TRACE INSPECTOR</div><div id="case-detail" class="empty-state small"><div class="empty-icon">⌕</div><strong>Select a question</strong><span>Result, reference, and trace.</span></div></section></div>
+        </div>
+        <section class="panel judge-panel"><div class="panel-label">DEEPEVAL LLM JUDGE <span class="right-small">Latest judge results</span></div><div id="judge-metrics" class="judge-placeholder">Run Advanced evaluation to view judge scores.</div></section>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
